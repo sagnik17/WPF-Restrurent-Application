@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restrurent_Application_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="600">
     <Grid>
-        
+        <DataGrid ItemsSource="{Binding FoodItems}" Margin="66,123,66,172"></DataGrid>
     </Grid>
+   
 </Window>

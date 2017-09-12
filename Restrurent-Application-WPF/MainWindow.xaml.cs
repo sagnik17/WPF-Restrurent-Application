@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Restrurent_Application_WPF.ViewModel;
+using Restrurent_Application_WPF.Model;
 
 namespace Restrurent_Application_WPF
 {
@@ -22,7 +24,12 @@ namespace Restrurent_Application_WPF
     {
         public MainWindow()
         {
+            //using (var context = new RestrurentDB()) { context.Database.Initialize(true); }
             InitializeComponent();
+           
+            this.DataContext = new RestrurentViewModel();
         }
+
+       
     }
 }
