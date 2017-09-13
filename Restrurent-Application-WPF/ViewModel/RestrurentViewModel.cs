@@ -10,10 +10,13 @@ namespace Restrurent_Application_WPF.ViewModel
     public class RestrurentViewModel
     {
         RestrurentDB _rDB = new RestrurentDB();
+        public IList<FoodItems> FoodItems { get; set; }
+        public IList<TableList> TableList { get; set; }
         public RestrurentViewModel()
         {
             FoodItems = _rDB.FoodItems.ToList();
+            TableList = _rDB.TableList.ToList();
         }
-        public IList<FoodItems> FoodItems { get; set; }
+       
     }
 }

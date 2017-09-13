@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:Restrurent_Application_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
-    <Grid>
-        <DataGrid ItemsSource="{Binding FoodItems}" Margin="66,123,66,172"></DataGrid>
+    <Grid Name="FoodItems">
+        <DataGrid ItemsSource="{Binding FoodItems}" Margin="68,24,64,412"></DataGrid>
+        <DataGrid ItemsSource="{Binding TableList}" Margin="68,262,64,174"></DataGrid>
     </Grid>
+   
    
 </Window>
