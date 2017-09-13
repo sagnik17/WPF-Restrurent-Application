@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Restrurent_Application_WPF.ViewModel;
 using Restrurent_Application_WPF.Model;
+using Restrurent_Application_WPF.Page_Screens;
 
 namespace Restrurent_Application_WPF
 {
@@ -30,6 +31,16 @@ namespace Restrurent_Application_WPF
             this.DataContext = new RestrurentViewModel();
         }
 
-       
+        private void AddItems_Click(object sender, RoutedEventArgs e)
+        {
+            AddFoodItem fooditemscreen = new AddFoodItem();
+            pageload(fooditemscreen);
+        }
+
+        public void pageload(Page pageToLoad)
+        {
+            MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            MainFrame.Content = pageToLoad;
+        }
     }
 }
