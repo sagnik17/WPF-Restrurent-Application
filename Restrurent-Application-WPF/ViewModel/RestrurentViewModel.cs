@@ -4,19 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Restrurent_Application_WPF.Model;
+using Restrurent_Application_WPF.Page_Screens;
 
 namespace Restrurent_Application_WPF.ViewModel
 {
     public class RestrurentViewModel
     {
-        RestrurentDB _rDB = new RestrurentDB();
-        public IList<FoodItems> FoodItems { get; set; }
-        public IList<TableList> TableList { get; set; }
+        public List<FoodItems> FoodItems { get; set; }
+        public List<TableList> TableList { get; set; }
+        RestrurentDB _rDB;
         public RestrurentViewModel()
         {
-            FoodItems = _rDB.FoodItems.ToList();
-            TableList = _rDB.TableList.ToList();
+            _rDB = new RestrurentDB();
         }
-       
+
+        public List<FoodItems> GetFoodItems()
+        {
+            FoodItems = _rDB.FoodItems.ToList();
+            return FoodItems;
+        }
+
+        public List<TableList> getTableList()
+        {
+            TableList = _rDB.TableList.ToList();
+            return TableList;
+        }
+
     }
 }

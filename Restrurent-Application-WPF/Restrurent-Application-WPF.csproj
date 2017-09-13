@@ -67,6 +67,12 @@
     <Compile Include="Page Screens\AddFoodItem.xaml.cs">
       <DependentUpon>AddFoodItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page Screens\ShowFoodItems.xaml.cs">
+      <DependentUpon>ShowFoodItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page Screens\ShowTableList.xaml.cs">
+      <DependentUpon>ShowTableList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\RestrurentViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +87,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Page Screens\AddFoodItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page Screens\ShowFoodItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page Screens\ShowTableList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

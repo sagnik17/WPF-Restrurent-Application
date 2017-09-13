@@ -30,10 +30,11 @@ namespace Restrurent_Application_WPF.Model
                     new TableList { BookingStatus = bookingstatus.Available.ToString() },
                     new TableList { BookingStatus = bookingstatus.Available.ToString() },
                     new TableList { BookingStatus = bookingstatus.Available.ToString() },
+                    new TableList { BookingStatus = bookingstatus.Booked.ToString() },
                     new TableList { BookingStatus = bookingstatus.Available.ToString() },
                     new TableList { BookingStatus = bookingstatus.Available.ToString() },
                     new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() }
+                     new TableList { BookingStatus = bookingstatus.Available.ToString() }
                 };
 
                 foreach (FoodItems f in fooditems)

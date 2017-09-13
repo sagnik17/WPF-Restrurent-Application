@@ -12,28 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Restrurent_Application_WPF.Model;
+using Restrurent_Application_WPF.ViewModel;
 
 namespace Restrurent_Application_WPF.Page_Screens
 {
     /// <summary>
-    /// Interaction logic for AddFoodItem.xaml
+    /// Interaction logic for ShowFoodItems.xaml
     /// </summary>
-    public partial class AddFoodItem : Page
+    public partial class ShowFoodItems : Page
     {
-        public AddFoodItem()
+        RestrurentViewModel _rvmObj;
+        public ShowFoodItems()
         {
             InitializeComponent();
-            this.WindowHeight = 450;
-            this.WindowWidth = 600;
-            
+          
+
+            _rvmObj = new RestrurentViewModel();
+            fooditemsgrid.ItemsSource = _rvmObj.GetFoodItems();
         }
 
-        private void Clear_Click(object sender, RoutedEventArgs e)
-        {
-            foodnametxt.Clear();
-            Descriptiontxt.Clear();
-            pricetxt.Clear();
-
-        }
     }
 }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restrurent_Application_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600">
+        Title="MainWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" WindowState="Normal">
     <DockPanel LastChildFill="True">
         <StackPanel Background="LightBlue" DockPanel.Dock="Bottom" Orientation="Vertical">
             <Label BorderBrush="Black">Status : Connected</Label>
@@ -15,7 +16,7 @@
                 <Label FontSize="24" Height="50" HorizontalContentAlignment="Center">Menu</Label>
                 
                 <Button Name="AddItems" Content="Add New Food Items" Height="50" Click="AddItems_Click"></Button>
-                <Button Name="PlaceNewOrder" Content="Place New Order" Height="50"></Button>
+                <Button Name="PlaceNewOrder" Content="Place New Order" Height="50" Click="PlaceNewOrder_Click"></Button>
                 <Button Name="UpdateOrder" Content="Update Order" Height="50"></Button>
                 <Button Name="GenerateBill" Content="Generate Bill" Height="50"></Button>
             </StackPanel>
@@ -25,8 +26,15 @@
             <Label BorderBrush="Black" Margin="5" FontSize="24" Width="429" HorizontalContentAlignment="Center">WPF Restrurent APP</Label>
         </StackPanel>
         </Border>
-        <Frame Background="LightBlue" Name="MainFrame">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Background="LightBlue" Name="MainFrame" Height="240"/>
+            <Frame Grid.Row="1" Background="LightBlue" Name="MainFrame1"/>
+
+        </Grid>
             
-        </Frame>
     </DockPanel>
 </Window>
