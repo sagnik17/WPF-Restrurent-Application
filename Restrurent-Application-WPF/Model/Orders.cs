@@ -15,6 +15,7 @@ namespace Restrurent_Application_WPF.Model
         public int OrderID { get; set; }
         public DateTime CreatedDate { get; set; }
         public double TotalPrice { get; set; }
+        public string OrderStatus { get; set; }
         public int TableID { get; set; }
         [ForeignKey("TableID")]
         public virtual TableList TableList { get; set; }

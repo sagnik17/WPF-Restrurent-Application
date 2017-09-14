@@ -12,6 +12,8 @@ namespace Restrurent_Application_WPF.Model
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TableID { get; set; }
+        
+        public string TableName { get; set; }
         public string BookingStatus { get; set; }
 
     }

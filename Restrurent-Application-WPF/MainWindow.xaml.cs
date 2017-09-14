@@ -33,10 +33,7 @@ namespace Restrurent_Application_WPF
 
         private void AddItems_Click(object sender, RoutedEventArgs e)
         {
-            AddFoodItem fooditemscreen = new AddFoodItem();
-            ShowFoodItems showfooditems = new ShowFoodItems();
-            pageload1(fooditemscreen);
-            pageload2(showfooditems);
+            Refresh();
         }
 
         public void pageload1(Page pageToLoad)
@@ -55,6 +52,15 @@ namespace Restrurent_Application_WPF
         {
             ShowTableList showtablelist = new ShowTableList();
             pageload2(showtablelist);
+        }
+
+
+        public void Refresh()
+        {
+            AddFoodItem fooditemscreen = new AddFoodItem();
+            ShowFoodItems showfooditems = new ShowFoodItems();
+            pageload1(fooditemscreen);
+            pageload2(showfooditems);
         }
     }
 }

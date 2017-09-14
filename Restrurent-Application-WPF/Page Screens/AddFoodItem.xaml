@@ -22,11 +22,14 @@
             <Label Foreground="Black">FoodName:</Label>
             <TextBox Name="foodnametxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Column="1" Margin="0,4,0,6" />
             <Label Foreground="Black" Grid.Row="1">Price :</Label>
-            <TextBox Name="Descriptiontxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="0,4,0,6" />
+            <TextBox Name="pricetxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="0,4,0,6" />
             <Label Foreground="Black" Grid.Row="2">Description:</Label>
-            <TextBox Name="pricetxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Margin="0,5,0,-42" />
-            <Button Content="Add This Item To Food Menu" Name="AddItem" Grid.ColumnSpan="2" Margin="-1,88,108,-90" Grid.Row="2"></Button>
+            <TextBox Name="Descriptiontxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Margin="0,5,0,-42" />
+            <Button Content="Add This Item To Food Menu" Name="AddItem" Grid.ColumnSpan="2" Margin="-1,88,108,-90" Grid.Row="2" Click="AddItem_Click"></Button>
             <Button Content="Clear" Name="Clear" Margin="0,88,-5,-90" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="105" Click="Clear_Click"/>
+            <Label x:Name="status" Foreground="Green" Margin="3,133,0,-137" Grid.Row="2" HorizontalContentAlignment="Center"
+                   FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
         </Grid>
+
     </StackPanel>
 </Page>

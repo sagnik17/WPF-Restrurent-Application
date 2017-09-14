@@ -29,7 +29,10 @@ namespace Restrurent_Application_WPF.Page_Screens
           
 
             _rvmObj = new RestrurentViewModel();
+            fooditemsgrid.ItemsSource = null;
             fooditemsgrid.ItemsSource = _rvmObj.GetFoodItems();
+            fooditemsgrid.Items.Refresh();
+            
         }
 
     }
