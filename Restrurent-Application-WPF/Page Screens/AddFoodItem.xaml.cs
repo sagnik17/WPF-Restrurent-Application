@@ -56,14 +56,16 @@ namespace Restrurent_Application_WPF.Page_Screens
             if(foodid > 0)
             {
                 ShowFoodItems showfooditems = new ShowFoodItems();
-               
-                
+
+                showfooditems.DataContext = this;
+                showfooditems.ShowsNavigationUI = true;
                 MainWindow main = new MainWindow();
-              
-                main.MainFrame1.UpdateLayout();
-                main.pageload2(showfooditems);
-                status.Content = "Food Item Added Successfully";
+
+                main.pageload1(showfooditems);
+               
             }
         }
+
+
     }
 }

@@ -31,8 +31,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame Grid.Row="0" Background="LightBlue" Name="MainFrame" Height="240"/>
-            <Frame Grid.Row="1" Background="LightBlue" Name="MainFrame1"/>
+            <Frame Grid.Row="0" Background="LightBlue" Name="MainFrame" Height="240" NavigationUIVisibility="Hidden"/>
+            <Frame Grid.Row="1" Background="LightBlue" Name="MainFrame1" NavigationUIVisibility="Hidden"/>
 
         </Grid>
             

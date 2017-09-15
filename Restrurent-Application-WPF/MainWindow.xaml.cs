@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Restrurent_Application_WPF.ViewModel;
 using Restrurent_Application_WPF.Model;
 using Restrurent_Application_WPF.Page_Screens;
+using System.Windows.Controls.Primitives;
 
 namespace Restrurent_Application_WPF
 {
@@ -25,15 +26,15 @@ namespace Restrurent_Application_WPF
     {
         public MainWindow()
         {
-            //using (var context = new RestrurentDB()) { context.Database.Initialize(true); }
-            InitializeComponent();
-           
-            this.DataContext = new RestrurentViewModel();
+            InitializeComponent();  
         }
 
         private void AddItems_Click(object sender, RoutedEventArgs e)
         {
-            Refresh();
+            AddFoodItem fooditemscreen = new AddFoodItem();
+            ShowFoodItems showfooditems = new ShowFoodItems();
+            pageload1(fooditemscreen);
+            pageload2(showfooditems);
         }
 
         public void pageload1(Page pageToLoad)
@@ -54,13 +55,5 @@ namespace Restrurent_Application_WPF
             pageload2(showtablelist);
         }
 
-
-        public void Refresh()
-        {
-            AddFoodItem fooditemscreen = new AddFoodItem();
-            ShowFoodItems showfooditems = new ShowFoodItems();
-            pageload1(fooditemscreen);
-            pageload2(showfooditems);
-        }
     }
 }

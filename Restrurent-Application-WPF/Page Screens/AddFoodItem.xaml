@@ -29,6 +29,8 @@
             <Button Content="Clear" Name="Clear" Margin="0,88,-5,-90" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="105" Click="Clear_Click"/>
             <Label x:Name="status" Foreground="Green" Margin="3,133,0,-137" Grid.Row="2" HorizontalContentAlignment="Center"
                    FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+
+            
         </Grid>
 
     </StackPanel>

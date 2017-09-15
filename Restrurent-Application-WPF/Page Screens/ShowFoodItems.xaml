@@ -11,7 +11,7 @@
     <Grid Background="LightBlue">
         <DataGrid Name="fooditemsgrid" Background="LightBlue" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding FoodName}" Width="*" Header="Food Name"/>
+                <DataGridTextColumn Binding="{Binding FoodName,Mode=TwoWay}" Width="*" Header="Food Name"/>
                 <DataGridTextColumn Binding="{Binding Description}" Width="*" Header="Food Name"/>
                 <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Food Name"/>
             </DataGrid.Columns>
