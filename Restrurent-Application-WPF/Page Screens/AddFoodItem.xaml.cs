@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Restrurent_Application_WPF.DB_Layer;
 using Restrurent_Application_WPF.Model;
-using Restrurent_Application_WPF.Page_Screens;
+using Restrurent_Application_WPF.ViewModel;
 
 namespace Restrurent_Application_WPF.Page_Screens
 {
@@ -23,14 +23,13 @@ namespace Restrurent_Application_WPF.Page_Screens
     /// </summary>
     public partial class AddFoodItem : Page
     {
-        DataAccessLayer _dbLayer;
+        private RestrurentViewModel _rVmObj;
         public AddFoodItem()
         {
             InitializeComponent();
             this.WindowHeight = 450;
             this.WindowWidth = 600;
-           
-            
+            DataContext = new RestrurentViewModel();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -38,34 +37,37 @@ namespace Restrurent_Application_WPF.Page_Screens
             foodnametxt.Clear();
             Descriptiontxt.Clear();
             pricetxt.Clear();
-
         }
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
-            FoodItems newFoodItem = new FoodItems();
-
-            newFoodItem.FoodName = foodnametxt.Text.ToString();
-            newFoodItem.Description = Descriptiontxt.Text.ToString();
-            newFoodItem.Price = Convert.ToInt32(pricetxt.Text.ToString());
-            
-            _dbLayer = new DataAccessLayer();
-            
-            int foodid = _dbLayer.InsertNewFoodItem(newFoodItem);
-
-            if(foodid > 0)
+            try
             {
-                ShowFoodItems showfooditems = new ShowFoodItems();
-
-                showfooditems.DataContext = this;
-                showfooditems.ShowsNavigationUI = true;
-                MainWindow main = new MainWindow();
-
-                main.pageload1(showfooditems);
-               
+                if (foodnametxt.Text == "" || Descriptiontxt.Text == "" || pricetxt.Text == "")
+                {
+                    status.Foreground = Brushes.Red;
+                    status.Content = "All Fields are compulsory";
+                }
+                else
+                {
+                    _rVmObj = new RestrurentViewModel();
+                    FoodItems fooditem = new FoodItems();
+                    fooditem.FoodName = foodnametxt.Text;
+                    fooditem.Description = Descriptiontxt.Text;
+                    fooditem.Price = Convert.ToInt32(pricetxt.Text.ToString());
+                    _rVmObj.AddFoodItem(fooditem);
+                    DataContext = new RestrurentViewModel();
+                    status.Foreground = Brushes.Green;
+                    status.Content = "Item Added Successfully";
+                }
             }
+            catch(Exception exp)
+            {
+                status.Foreground = Brushes.Red;
+                status.Content = "Please enter correct data";
+            }
+            
         }
-
 
     }
 }

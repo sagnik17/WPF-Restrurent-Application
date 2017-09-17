@@ -32,9 +32,8 @@ namespace Restrurent_Application_WPF
         private void AddItems_Click(object sender, RoutedEventArgs e)
         {
             AddFoodItem fooditemscreen = new AddFoodItem();
-            ShowFoodItems showfooditems = new ShowFoodItems();
             pageload1(fooditemscreen);
-            pageload2(showfooditems);
+           
         }
 
         public void pageload1(Page pageToLoad)
@@ -43,16 +42,10 @@ namespace Restrurent_Application_WPF
             MainFrame.Content = pageToLoad;
         }
 
-        public void pageload2(Page pageToLoad)
-        {
-            MainFrame1.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            MainFrame1.Content = pageToLoad;
-        }
-
         private void PlaceNewOrder_Click(object sender, RoutedEventArgs e)
         {
-            ShowTableList showtablelist = new ShowTableList();
-            pageload2(showtablelist);
+            PlaceNewOrder showtablelist = new PlaceNewOrder();
+            pageload1(showtablelist);
         }
 
     }

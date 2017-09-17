@@ -17,6 +17,7 @@ namespace Restrurent_Application_WPF.Model
         public DbSet<TableList> TableList { get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<FoodOrders> FoodOrders { get; set; }
+        
        
        
     }

@@ -26,15 +26,15 @@ namespace Restrurent_Application_WPF.Model
 
                 List<TableList> tablelist = new List<TableList>()
                 {
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Booked.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                    new TableList { BookingStatus = bookingstatus.Available.ToString() },
-                     new TableList { BookingStatus = bookingstatus.Available.ToString() }
+                    new TableList { TableName = "Table 1", BookingStatus = bookingstatus.Available.ToString() },
+                    new TableList {  TableName = "Table 2", BookingStatus = bookingstatus.Available.ToString() },
+                    new TableList {  TableName = "Table 3", BookingStatus = bookingstatus.Available.ToString() },
+                    new TableList {  TableName = "Table 4", BookingStatus = bookingstatus.Available.ToString() },
+                    new TableList {  TableName = "Table 5", BookingStatus = bookingstatus.Booked.ToString() },
+                    new TableList {  TableName = "Table 6", BookingStatus = bookingstatus.Available.ToString() },
+                    new TableList {  TableName = "Table 7", BookingStatus = bookingstatus.Available.ToString() },
+                    new TableList {  TableName = "Table 8", BookingStatus = bookingstatus.Available.ToString() },
+                     new TableList {  TableName = "Table 9", BookingStatus = bookingstatus.Available.ToString() }
                 };
 
                 foreach (FoodItems f in fooditems)

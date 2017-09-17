@@ -5,33 +5,72 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Restrurent_Application_WPF.Page_Screens"
       mc:Ignorable="d" 
+      d:DataContext="{d:DesignInstance viewModels:RestrurentViewModel}"
       d:DesignHeight="300" d:DesignWidth="300"
+      xmlns:viewModels="clr-namespace:Restrurent_Application_WPF.ViewModel"
+      xmlns:Models="clr-namespace:Restrurent_Application_WPF.Model"
+      xmlns:ActionEvents="clr-namespace:Restrurent_Application_WPF.ActionEvents"
       Title="AddFoodItem" HorizontalAlignment="Center">
 
-    <StackPanel Height="500" Width="300" HorizontalAlignment="Center" >
-        <Grid Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Label Foreground="Black">FoodName:</Label>
-            <TextBox Name="foodnametxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Column="1" Margin="0,4,0,6" />
-            <Label Foreground="Black" Grid.Row="1">Price :</Label>
-            <TextBox Name="pricetxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="0,4,0,6" />
-            <Label Foreground="Black" Grid.Row="2">Description:</Label>
-            <TextBox Name="Descriptiontxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Margin="0,5,0,-42" />
-            <Button Content="Add This Item To Food Menu" Name="AddItem" Grid.ColumnSpan="2" Margin="-1,88,108,-90" Grid.Row="2" Click="AddItem_Click"></Button>
-            <Button Content="Clear" Name="Clear" Margin="0,88,-5,-90" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="105" Click="Clear_Click"/>
-            <Label x:Name="status" Foreground="Green" Margin="3,133,0,-137" Grid.Row="2" HorizontalContentAlignment="Center"
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+        <Style TargetType="Label">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+    </Page.Resources>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Height="150" Width="300" HorizontalAlignment="Center" >
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Foreground="#FF111010" Margin="-1,0,205,0" Grid.ColumnSpan="2" FontWeight="Bold">FoodName:</Label>
+                <TextBox Text="{Binding SelectedFoodItem.FoodName, 
+                                ValidatesOnDataErrors=True,
+                                UpdateSourceTrigger=PropertyChanged}" 
+                                Name="foodnametxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Column="1" Margin="0,4,0,6" />
+                <Label Foreground="#FF111010" Grid.Row="1" Grid.ColumnSpan="2" Margin="1,0,216,0" FontWeight="Bold">Price :</Label>
+                <TextBox Text="{Binding SelectedFoodItem.Price, 
+                                ValidatesOnDataErrors=True,
+                                UpdateSourceTrigger=PropertyChanged}" 
+                                Name="pricetxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="0,4,0,6" />
+                <Label Foreground="#FF111010" Grid.Row="2" Margin="-3,0,3,0" FontWeight="Bold">Description:</Label>
+                <TextBox Text="{Binding SelectedFoodItem.Description, 
+                                ValidatesOnDataErrors=True,
+                                UpdateSourceTrigger=PropertyChanged}" 
+                                Name="Descriptiontxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Margin="0,5,0,-42" />
+                <Button Content="Add New" Name="AddItem" Visibility="{Binding CanNotModify, Converter={StaticResource VisibilityConverter}}" Margin="19,88,168,-90" Grid.Row="2" Grid.ColumnSpan="2" Click="AddItem_Click"/>
+                <Button Command="{Binding UpdateCommand}" Visibility="{Binding CanModify, Converter={StaticResource VisibilityConverter}}" Content="Update Item" Name="IpdateItem"
+                        Margin="19,121,168,-123" Grid.Row="2" Grid.ColumnSpan="2" />
+
+                <Button Content="Clear" Name="Clear" Visibility="{Binding CanNotModify, Converter={StaticResource VisibilityConverter}}" Margin="0,88,0,-90" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="105" Click="Clear_Click"/>
+                <Label x:Name="status" Content="{Binding Message,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}"  Foreground="Green" Margin="-3,150,-5,-149" Grid.Row="2" HorizontalContentAlignment="Center"
                    FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                <Button x:Name="button" Content="Delete Item" Command="{Binding DeleteCommand}"
+                        Visibility="{Binding CanModify, Converter={StaticResource VisibilityConverter}}"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Grid.Column="1" Margin="101,125,0,-128" Grid.Row="2" Height="25"/>
 
-            
-        </Grid>
 
-    </StackPanel>
+            </Grid>
+
+        </StackPanel>
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" Height="296">
+            <DataGrid Background="AliceBlue" x:Name="fooditemsgrid" Margin="3,105" ItemsSource="{Binding FoodItems}" SelectedItem="{Binding SelectedFoodItem}"
+                IsReadOnly="True" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" Height="188" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding FoodName}" Width="*" Header="Food Name"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="*" Header="Description"/>
+                    <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </DockPanel>
+
 </Page>

@@ -75,18 +75,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ActionEvents\ActionCommand.cs" />
-    <Compile Include="ActionEvents\ActionEventViewModel.cs" />
     <Compile Include="ActionEvents\ObservableObject.cs" />
     <Compile Include="DB Layer\DataAccessLayer.cs" />
+    <Compile Include="Model\ViewOrderItems.cs" />
     <Compile Include="Page Screens\AddFoodItem.xaml.cs">
       <DependentUpon>AddFoodItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page Screens\ShowFoodItems.xaml.cs">
-      <DependentUpon>ShowFoodItems.xaml</DependentUpon>
+    <Compile Include="Page Screens\PlaceNewOrder.xaml.cs">
+      <DependentUpon>PlaceNewOrder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page Screens\ShowTableList.xaml.cs">
-      <DependentUpon>ShowTableList.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModel\OrderingViewModel.cs" />
     <Compile Include="ViewModel\RestrurentViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -104,11 +102,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Page Screens\ShowFoodItems.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Page Screens\ShowTableList.xaml">
+    <Page Include="Page Screens\PlaceNewOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,7 +141,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\frame.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
