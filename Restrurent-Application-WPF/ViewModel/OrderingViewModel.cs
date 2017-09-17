@@ -32,22 +32,24 @@ namespace Restrurent_Application_WPF.ViewModel
             get { return _table; }
             set { _table = value; }
         }
+        private List<TableList> _alltable;
+        public List<TableList> AllTablelist
+        {
+            get { return _alltable; }
+            set { _alltable = value; }
+        }
         private TableList _stablelist;
-
         public TableList STableList
         {
             get { return _stablelist; }
             set { _stablelist = value; }
         }
-
-        
         public ICollection<FoodItems> Foodlist
         {
             get;
             private set;
         }
         private FoodItems _sFoodItem;
-
         public FoodItems SFoodList
         {
             get { return _sFoodItem; }
@@ -79,24 +81,30 @@ namespace Restrurent_Application_WPF.ViewModel
 
         public OrderingViewModel(DataAccessLayer _dbLayerObj)
         {
-            getTableList();
+            getAvailableTableList();
+            getAllTableList();
             getFoodList();
             this._dbLayerObj = _dbLayerObj;
         }
 
-        public List<TableList> getTableList()
+        public void getAllTableList()
+        {
+            AllTablelist = new List<TableList>();
+            _dbLayerObj = new DataAccessLayer();
+            AllTablelist = _dbLayerObj.getTableList();
+        }
+
+        public void getAvailableTableList()
         {
             Tablelist = new List<TableList>();
             _dbLayerObj = new DataAccessLayer();
             Tablelist = _dbLayerObj.getTableListToPlaceOrder();
-            return Tablelist;
         }
 
-        public List<TableList> getFoodList()
+        public void getFoodList()
         {
             _dbLayerObj = new DataAccessLayer();
             Foodlist = _dbLayerObj.GetFoodItems();
-            return Tablelist;
         }
 
         public FoodItems getFoodDetail(int foodid)
@@ -116,7 +124,10 @@ namespace Restrurent_Application_WPF.ViewModel
             return _dbLayerObj.PlaceOrder(Obj);
         }
 
-        
+        public List<ViewOrderItems> getFoodOrderItems()
+        {
+
+        }
 
 
 

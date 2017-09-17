@@ -48,5 +48,10 @@ namespace Restrurent_Application_WPF
             pageload1(showtablelist);
         }
 
+        private void UpdateOrder_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateOrders updateorderpage = new UpdateOrders();
+            pageload1(updateorderpage);
+        }
     }
 }

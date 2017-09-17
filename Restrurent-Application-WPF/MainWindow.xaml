@@ -21,7 +21,7 @@
 
                 <Button Name="AddItems" Command="{Binding GetFoodListCommand}" Content="Add New Food Items" Height="50" Click="AddItems_Click"></Button>
                 <Button Name="PlaceNewOrder" Content="Place New Order" Height="50" Click="PlaceNewOrder_Click"></Button>
-                <Button Name="UpdateOrder" Content="Update Order" Height="50"></Button>
+                <Button Name="UpdateOrder" Content="Update Order" Height="50" Click="UpdateOrder_Click"></Button>
                 <Button Name="GenerateBill" Content="Generate Bill" Height="50"></Button>
             </StackPanel>
         </Border>

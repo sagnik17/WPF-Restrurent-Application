@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using Restrurent_Application_WPF.Model;
+using System.Data;
 
 namespace Restrurent_Application_WPF.DB_Layer
 {
@@ -149,7 +150,28 @@ namespace Restrurent_Application_WPF.DB_Layer
                 return true;
             else
                 return false;
-            
+        }
+
+        public List<ViewOrderItems> getFoodOrderDetails()
+        {
+            DataTable dt = new DataTable();
+            List<ViewOrderItems> orderItems = new List<ViewOrderItems>();
+            ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            string query = @"select * from TableLists t inner join Orders o on t.TableID = o.TableID inner join FoodOrders fo on
+                            fo.OrderID = o.OrderID inner join FoodItems ft on ft.FoodID = fo.FoodID where t.BookingStatus = @BookingStatus and t.TableID = @TableID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@BookingStatus", bookingstatus.Booked.ToString());
+            cmd.Parameters.AddWithValue("@TableID", 1);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            for(int i = 0; dt.Rows.Count > i; i++)
+            {
+                ViewOrderItems orderItem = new ViewOrderItems();
+                
+            }
         }
     }
 }

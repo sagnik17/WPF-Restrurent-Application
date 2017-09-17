@@ -14,5 +14,9 @@ namespace Restrurent_Application_WPF.Model
         public int Quantity { get; set; }
         public int Price { get; set; }
         public string FoodName { get; set; }
+        public string OrderStatus { get; set; }
+        public DateTime OrderCreatedDate { get; set; }
+        public string BookingStatus { get; set; }
+        public string TableName { get; set; }
     }
 }

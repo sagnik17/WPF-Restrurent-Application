@@ -84,6 +84,9 @@
     <Compile Include="Page Screens\PlaceNewOrder.xaml.cs">
       <DependentUpon>PlaceNewOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page Screens\UpdateOrders.xaml.cs">
+      <DependentUpon>UpdateOrders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\OrderingViewModel.cs" />
     <Compile Include="ViewModel\RestrurentViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -103,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page Screens\PlaceNewOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page Screens\UpdateOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

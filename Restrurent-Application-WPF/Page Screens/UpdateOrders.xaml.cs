@@ -12,17 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Restrurent_Application_WPF.ViewModel;
 
 namespace Restrurent_Application_WPF.Page_Screens
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for UpdateOrders.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class UpdateOrders : Page
     {
-        public Page1()
+        public UpdateOrders()
         {
             InitializeComponent();
+            DataContext = new OrderingViewModel();
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show(tablelistcombo.SelectedValue.ToString());
         }
     }
 }

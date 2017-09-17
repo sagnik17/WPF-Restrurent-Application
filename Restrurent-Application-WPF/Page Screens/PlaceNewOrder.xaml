@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:Restrurent_Application_WPF.Page_Screens"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance viewModels:OrderingViewModel}"
-      d:DesignHeight="300"
+      d:DesignHeight="300" d:DesignWidth="300"
       xmlns:viewModels="clr-namespace:Restrurent_Application_WPF.ViewModel"
        xmlns:Models="clr-namespace:Restrurent_Application_WPF.Model"
-      Title="PlaceNewOrder" Width="364.286">
+      Title="PlaceNewOrder">
 
     <Page.Resources>
 
