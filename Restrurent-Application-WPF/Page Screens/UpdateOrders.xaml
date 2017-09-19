@@ -22,9 +22,9 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Height="50">
             <Grid Height="293">
-                <ComboBox x:Name="tablelistcombo" 
+                <ComboBox x:Name="tablelistcombo"  
                   ItemsSource="{Binding AllTablelist}" SelectedItem="{Binding STableList}" SelectedValuePath="TableID" DisplayMemberPath="TableName" 
-                  HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="133,14,0,0" SelectionChanged="comboBox_SelectionChanged"/>
+                  HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="133,14,0,0"/>
                 <Label x:Name="label" Content="Select Table Number" Margin="8,10,197,264"/>
             </Grid>
         </StackPanel>
@@ -53,17 +53,17 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Label Foreground="#FF111010" Margin="-1,0,205,0" Grid.ColumnSpan="2" FontWeight="Bold">FoodName:</Label>
-                <TextBox Text="{Binding SelectedFoodItem.FoodName, 
+                <TextBox Text="{Binding SelectedOrderItem.FoodName, 
                                 ValidatesOnDataErrors=True,
                                 UpdateSourceTrigger=PropertyChanged}" 
                                 Name="foodnametxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Column="1" Margin="0,4,0,6" />
                 <Label Foreground="#FF111010" Grid.Row="1" Grid.ColumnSpan="2" Margin="1,0,216,0" FontWeight="Bold">Price :</Label>
-                <TextBox Text="{Binding SelectedFoodItem.Price, 
+                <TextBox Text="{Binding SelectedOrderItem.Price, 
                                 ValidatesOnDataErrors=True,
                                 UpdateSourceTrigger=PropertyChanged}" 
                                 Name="pricetxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="0,4,0,6" />
                 <Label Foreground="#FF111010" Grid.Row="2" Margin="-3,0,3,0" FontWeight="Bold">Description:</Label>
-                <TextBox Text="{Binding SelectedFoodItem.Description, 
+                <TextBox Text="{Binding SelectedOrderItem.Quantity, 
                                 ValidatesOnDataErrors=True,
                                 UpdateSourceTrigger=PropertyChanged}" 
                                 Name="Descriptiontxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Margin="0,5,0,-42" />

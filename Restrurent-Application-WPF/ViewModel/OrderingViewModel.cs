@@ -72,11 +72,27 @@ namespace Restrurent_Application_WPF.ViewModel
                 NotifyPropertyChanged("CanNotModify");
             }
         }
+        private TableList selectedTable;
+        public TableList SelectedTable
+        {
+            get
+            {
+                return selectedTable;
+            }
+            set
+            {
+                selectedTable = value;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged("CanModify");
+                NotifyPropertyChanged("CanNotModify");
+            }
+        }
 
 
         public OrderingViewModel() : this(new DataAccessLayer())
         {
             Message = "";
+            GetCustomerList();
         }
 
         public OrderingViewModel(DataAccessLayer _dbLayerObj)
@@ -84,6 +100,8 @@ namespace Restrurent_Application_WPF.ViewModel
             getAvailableTableList();
             getAllTableList();
             getFoodList();
+            foodOrderItems = new ObservableCollection<ViewOrderItems>();
+            FoodItems = new ObservableCollection<FoodItems>();
             this._dbLayerObj = _dbLayerObj;
         }
 
@@ -124,12 +142,36 @@ namespace Restrurent_Application_WPF.ViewModel
             return _dbLayerObj.PlaceOrder(Obj);
         }
 
-        public List<ViewOrderItems> getFoodOrderItems()
-        {
 
+        public ICommand GetFoodListCommand
+        {
+            get
+            {
+                return new ActionCommand(p => getFoodOrderItems());
+            }
+        }
+        public void getFoodOrderItems()
+        {
+            _dbLayerObj = new DataAccessLayer();
+            foodOrderItems = _dbLayerObj.getFoodOrderDetails();
+           // return  _dbLayerObj.getFoodOrderDetails();
         }
 
 
+        public ICollection<FoodItems> FoodItems
+        {
+            get;
+            private set;
+        }
+
+        private void GetCustomerList()
+        {
+            FoodItems.Clear();
+            //selectedFoodItem = null;
+            _dbLayerObj = new DataAccessLayer();
+            foreach (var fooditem in _dbLayerObj.GetFoodItems())
+                FoodItems.Add(fooditem);
+        }
 
     }
 }

@@ -170,8 +170,10 @@ namespace Restrurent_Application_WPF.DB_Layer
             for(int i = 0; dt.Rows.Count > i; i++)
             {
                 ViewOrderItems orderItem = new ViewOrderItems();
-                
+                orderItems.Add(orderItem);
             }
+
+            return orderItems;
         }
     }
 }

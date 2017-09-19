@@ -21,6 +21,8 @@ namespace Restrurent_Application_WPF.Page_Screens
     /// </summary>
     public partial class UpdateOrders : Page
     {
+        private OrderingViewModel _oVM;
+
         public UpdateOrders()
         {
             InitializeComponent();
@@ -29,6 +31,9 @@ namespace Restrurent_Application_WPF.Page_Screens
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _oVM = new OrderingViewModel();
+            _oVM.getFoodOrderItems();
+            //fooditemsgrid.ItemsSource = _oVM.getFoodOrderItems();
             MessageBox.Show(tablelistcombo.SelectedValue.ToString());
         }
     }
