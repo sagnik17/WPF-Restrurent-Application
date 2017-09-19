@@ -14,6 +14,18 @@ namespace Restrurent_Application_WPF.ViewModel
     public class OrderingViewModel : ObservableObject
     {
         private string status;
+        private int _GST;
+        private int _totalprice;
+        public int GST
+        {
+            get { return _GST; }
+            set { _GST = value; NotifyPropertyChanged(); }
+        }
+        public int TotalPrice
+        {
+            get { return _totalprice; }
+            set { _totalprice = value; NotifyPropertyChanged(); }
+        }
         public string Message
         {
             get
@@ -110,7 +122,7 @@ namespace Restrurent_Application_WPF.ViewModel
         {
             AllTablelist = new List<TableList>();
             _dbLayerObj = new DataAccessLayer();
-            AllTablelist = _dbLayerObj.getTableList();
+            AllTablelist = _dbLayerObj.getTableList().Where(p => p.BookingStatus == "Booked").ToList();
         }
 
         public void getAvailableTableList()
@@ -130,11 +142,19 @@ namespace Restrurent_Application_WPF.ViewModel
         {
             return _dbLayerObj.getFoodDetails(foodid);
         }
-       
-        public ICollection<ViewOrderItems> foodOrderItems
+
+        private ObservableCollection<ViewOrderItems> _foodOrderItems;
+        public ObservableCollection<ViewOrderItems> foodOrderItems
         {
-            get;
-            private set;
+            get
+            {
+                return _foodOrderItems;
+            }
+            set
+            {
+                _foodOrderItems = value;
+                NotifyPropertyChanged();
+            }
         }
         
         public bool PlaceOrder(List<ViewOrderItems> Obj)
@@ -160,27 +180,46 @@ namespace Restrurent_Application_WPF.ViewModel
            //return  _dbLayerObj.getFoodOrderDetails();
         }
 
-        public ICommand GetOrder
+        public ICommand UpdateCommand
         {
             get
             {
-                return new ActionCommand(p => getFoodOrderItems());
+                return new ActionCommand(p => UpdateFoodItem());
             }
         }
-        //public ICollection<FoodItems> FoodItems
-        //{
-        //    get;
-        //    private set;
-        //}
 
-        //private void GetCustomerList()
-        //{
-        //    FoodItems.Clear();
-        //    //selectedFoodItem = null;
-        //    _dbLayerObj = new DataAccessLayer();
-        //    foreach (var fooditem in _dbLayerObj.GetFoodItems())
-        //        FoodItems.Add(fooditem);
-        //}
+        public ICommand GenerateFoodBill
+        {
+            get
+            {
+                return new ActionCommand(p => GenerateBill());
+            }
+        }
 
+        private void UpdateFoodItem()
+        {
+            if (selectedOrderItem != null || selectedOrderItem.Quantity > 0)
+            {
+                SelectedOrderItem.Price = SelectedOrderItem.Quantity * SelectedOrderItem.fPrice;
+                _dbLayerObj.UpdateOrderDetails(SelectedOrderItem);
+                getFoodOrderItems();
+                Message = "Order Item Updated Successfully";
+               
+            }
+        }
+
+        private void GenerateBill()
+        {
+            if (STableList != null)
+            {
+
+                foodOrderItems = _dbLayerObj.getFoodOrderDetails(STableList);
+
+                GST = (foodOrderItems.Sum(p => p.Price) * 6)/100;
+                TotalPrice = foodOrderItems.Sum(p => p.Price) + GST;
+                _dbLayerObj.UpdateTableStatus(STableList);
+                Message = STableList.TableName + " is Available Now";
+            }
+        }
     }
 }

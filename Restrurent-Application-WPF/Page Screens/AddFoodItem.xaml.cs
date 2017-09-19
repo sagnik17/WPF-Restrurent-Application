@@ -54,7 +54,7 @@ namespace Restrurent_Application_WPF.Page_Screens
                     FoodItems fooditem = new FoodItems();
                     fooditem.FoodName = foodnametxt.Text;
                     fooditem.Description = Descriptiontxt.Text;
-                    fooditem.Price = Convert.ToInt32(pricetxt.Text.ToString());
+                    fooditem.fPrice = Convert.ToInt32(pricetxt.Text.ToString());
                     _rVmObj.AddFoodItem(fooditem);
                     DataContext = new RestrurentViewModel();
                     status.Foreground = Brushes.Green;

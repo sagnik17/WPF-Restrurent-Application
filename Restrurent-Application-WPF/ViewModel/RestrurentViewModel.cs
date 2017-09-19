@@ -94,7 +94,7 @@ namespace Restrurent_Application_WPF.ViewModel
                        (
                            !String.IsNullOrWhiteSpace(SelectedFoodItem.FoodName) &&
                            !String.IsNullOrWhiteSpace(SelectedFoodItem.Description) &&
-                           !String.IsNullOrWhiteSpace(SelectedFoodItem.Price.ToString())
+                           !String.IsNullOrWhiteSpace(SelectedFoodItem.fPrice.ToString())
                        );
             }
         }

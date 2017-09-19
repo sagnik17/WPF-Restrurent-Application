@@ -8,6 +8,7 @@ namespace Restrurent_Application_WPF.Model
 {
     public class ViewOrderItems
     {
+        public int FoodOrderID { get; set; }
         public int OrderID { get; set; }
         public int FoodID { get; set; }
         public int TableID { get; set; }
@@ -18,5 +19,6 @@ namespace Restrurent_Application_WPF.Model
         public DateTime OrderCreatedDate { get; set; }
         public string BookingStatus { get; set; }
         public string TableName { get; set; }
+        public int fPrice { get; set; }
     }
 }

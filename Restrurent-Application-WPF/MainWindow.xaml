@@ -12,17 +12,19 @@
         Title="Snak Jack Restrurent App" Height="600" Width="800" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" WindowState="Normal" Icon="Images/Icon.jpg" Background="#FFE05959">
     <DockPanel LastChildFill="True">
-        <StackPanel Background="AliceBlue" DockPanel.Dock="Bottom" Orientation="Vertical">
-            <Label BorderBrush="Black">Status : Connected</Label>
-        </StackPanel>
+        <Border BorderBrush="DarkBlue" DockPanel.Dock="Bottom" BorderThickness="1">
+            <StackPanel Background="AliceBlue" Orientation="Vertical">
+                <Label BorderBrush="AliceBlue">Status : Connected</Label>
+            </StackPanel>
+        </Border>
         <Border BorderBrush="DarkBlue" DockPanel.Dock="Left" BorderThickness="1">
             <StackPanel Background="AliceBlue" MinWidth="160">
                 <Label FontSize="24" Height="50" HorizontalContentAlignment="Center" Foreground="#FF14B0BF" FontWeight="Bold">Menu</Label>
 
-                <Button Name="AddItems" Command="{Binding GetFoodListCommand}" Content="Add New Food Items" Height="50" Click="AddItems_Click" Background="#FFDADADA" Foreground="#FF179B9B" FontWeight="Bold"></Button>
-                <Button Name="PlaceNewOrder" Content="Place New Order" Height="50" Click="PlaceNewOrder_Click" FontWeight="Bold" Foreground="#FF2D9E9E"></Button>
-                <Button Name="UpdateOrder" Content="Update Order" Height="50" Click="UpdateOrder_Click" FontWeight="Bold" Foreground="#FF29A2A2"></Button>
-                <Button Name="GenerateBill" Content="Generate Bill" Height="50" FontWeight="Bold" Foreground="#FF239393"></Button>
+                <Button Name="AddItems" Command="{Binding GetFoodListCommand}" Content="Add New Food Items" Height="50" Click="AddItems_Click" Background="#FFF5D9C1" Foreground="#FF179B9B" FontWeight="Bold"></Button>
+                <Button Name="PlaceNewOrder" Content="Place New Order" Height="50" Click="PlaceNewOrder_Click" FontWeight="Bold" Foreground="#FF2D9E9E" Background="#FFF5D9C1"></Button>
+                <Button Name="UpdateOrder" Content="Update Order" Height="50" Click="UpdateOrder_Click" FontWeight="Bold" Foreground="#FF29A2A2" Background="#FFF5D9C1"></Button>
+                <Button Name="GenerateBill" Content="Generate Bill" Height="50" FontWeight="Bold" Foreground="#FF239393" Background="#FFF5D9C1" Click="GenerateBill_Click"></Button>
             </StackPanel>
         </Border>
         <Border BorderBrush="DarkBlue" BorderThickness="1" DockPanel.Dock="Top">

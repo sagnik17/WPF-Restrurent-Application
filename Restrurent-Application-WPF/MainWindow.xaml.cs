@@ -53,5 +53,11 @@ namespace Restrurent_Application_WPF
             UpdateOrders updateorderpage = new UpdateOrders();
             pageload1(updateorderpage);
         }
+
+        private void GenerateBill_Click(object sender, RoutedEventArgs e)
+        {
+            GenerateBill obj = new GenerateBill();
+            pageload1(obj);
+        }
     }
 }

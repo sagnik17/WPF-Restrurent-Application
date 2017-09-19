@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Restrurent_Application_WPF.Model;
 using System.Data;
+using System.Collections.ObjectModel;
 
 namespace Restrurent_Application_WPF.DB_Layer
 {
@@ -42,7 +43,7 @@ namespace Restrurent_Application_WPF.DB_Layer
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@FoodName", newfoodItem.FoodName);
             cmd.Parameters.AddWithValue("@Description", newfoodItem.Description);
-            cmd.Parameters.AddWithValue("@Price", newfoodItem.Price);
+            cmd.Parameters.AddWithValue("@Price", newfoodItem.fPrice);
             //cmd.ExecuteScalar();
             
             int foodid = Convert.ToInt32(cmd.ExecuteScalar());
@@ -62,6 +63,20 @@ namespace Restrurent_Application_WPF.DB_Layer
             //_rDBContext.Entry(customer).CurrentValues.SetValues(customer);
             _rDBContext.Entry(fooditem).State = System.Data.Entity.EntityState.Modified;
             _rDBContext.SaveChanges();
+        }
+
+        public void UpdateOrderDetails(ViewOrderItems fooditem)
+        {
+            ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            string query = "Update FoodOrders set Quantity = @Quantity, Price = @Price where FoodOrderID = @FoodOrderID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@FoodOrderID", fooditem.FoodOrderID);
+            cmd.Parameters.AddWithValue("@Quantity", fooditem.Quantity);
+            cmd.Parameters.AddWithValue("@Price", fooditem.Price);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void DeleteFoodDetails(FoodItems foodItem)
@@ -152,24 +167,27 @@ namespace Restrurent_Application_WPF.DB_Layer
                 return false;
         }
 
-        public List<ViewOrderItems> getFoodOrderDetails(TableList selectedtable)
+        public ObservableCollection<ViewOrderItems> getFoodOrderDetails(TableList selectedtable)
         {
             DataTable dt = new DataTable();
-            List<ViewOrderItems> orderItems = new List<ViewOrderItems>();
+            ObservableCollection<ViewOrderItems> orderItems = new ObservableCollection<ViewOrderItems>();
             ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
             conn = new SqlConnection(ConnectionString);
             conn.Open();
             string query = @"select * from TableLists t inner join Orders o on t.TableID = o.TableID inner join FoodOrders fo on
-                            fo.OrderID = o.OrderID inner join FoodItems ft on ft.FoodID = fo.FoodID where t.BookingStatus = @BookingStatus and t.TableID = @TableID";
+                            fo.OrderID = o.OrderID inner join FoodItems ft on ft.FoodID = fo.FoodID where t.BookingStatus = @BookingStatus and t.TableID = @TableID and o.OrderStatus = @OrderStatus";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@BookingStatus", bookingstatus.Booked.ToString());
             cmd.Parameters.AddWithValue("@TableID", selectedtable.TableID);
+            cmd.Parameters.AddWithValue("@OrderStatus", Orderstatus.InProgress.ToString());
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
 
             for(int i = 0; dt.Rows.Count > i; i++)
             {
                 ViewOrderItems orderItem = new ViewOrderItems();
+                orderItem.fPrice = Convert.ToInt32(dt.Rows[i]["fPrice"]);
+                orderItem.FoodOrderID = Convert.ToInt32(dt.Rows[i]["FoodOrderID"]);
                 orderItem.OrderID = Convert.ToInt32(dt.Rows[i]["OrderID"]);
                 orderItem.FoodID = Convert.ToInt32(dt.Rows[i]["FoodID"]);
                 orderItem.TableID = Convert.ToInt32(dt.Rows[i]["FoodID"]);
@@ -184,6 +202,28 @@ namespace Restrurent_Application_WPF.DB_Layer
             }
 
             return orderItems;
+        }
+
+        public void UpdateTableStatus(TableList t)
+        {
+            ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            conn = new SqlConnection(ConnectionString);
+            conn.Open();
+            string updateTablestatus = "Update TableLists set BookingStatus = @BookingStatus where TableID = @TableID";
+            SqlCommand cmd2 = new SqlCommand(updateTablestatus, conn);
+            cmd2.Parameters.AddWithValue("@BookingStatus", bookingstatus.Available.ToString());
+            cmd2.Parameters.AddWithValue("@TableID", t.TableID);
+
+            cmd2.ExecuteNonQuery();
+
+            string updateOrderStatus = "Update Orders set OrderStatus = @OrderStatus where TableID = @TableID";
+            SqlCommand cmd = new SqlCommand(updateOrderStatus, conn);
+            cmd.Parameters.AddWithValue("@OrderStatus", Orderstatus.Closed.ToString());
+            cmd.Parameters.AddWithValue("@TableID", t.TableID);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
         }
     }
 }

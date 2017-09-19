@@ -81,6 +81,9 @@
     <Compile Include="Page Screens\AddFoodItem.xaml.cs">
       <DependentUpon>AddFoodItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page Screens\GenerateBill.xaml.cs">
+      <DependentUpon>GenerateBill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page Screens\PlaceNewOrder.xaml.cs">
       <DependentUpon>PlaceNewOrder.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Page Screens\AddFoodItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page Screens\GenerateBill.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

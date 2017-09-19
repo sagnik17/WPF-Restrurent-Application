@@ -43,7 +43,7 @@ namespace Restrurent_Application_WPF.Page_Screens
                 _oVM = new OrderingViewModel();
                 fooditemdata = _oVM.getFoodDetail(Convert.ToInt32(fooditem.SelectedValue));
                 _vOrderItems.Quantity = Convert.ToInt32(Quantitytxt.Text);
-                _vOrderItems.Price = fooditemdata.Price * _vOrderItems.Quantity;
+                _vOrderItems.Price = fooditemdata.fPrice * _vOrderItems.Quantity;
                 _vOrderItems.FoodID = fooditemdata.FoodID;
                 _vOrderItems.FoodName = fooditemdata.FoodName;
                 _vOrderItems.TableID = Convert.ToInt32(tableitem.SelectedValue);

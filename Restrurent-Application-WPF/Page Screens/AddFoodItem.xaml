@@ -37,7 +37,7 @@
                                 UpdateSourceTrigger=PropertyChanged}" 
                                 Name="foodnametxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Column="1" Margin="0,4,0,6" />
                 <Label Foreground="#FF111010" Grid.Row="1" Grid.ColumnSpan="2" Margin="1,0,216,0" FontWeight="Bold">Price :</Label>
-                <TextBox Text="{Binding SelectedFoodItem.Price, 
+                <TextBox Text="{Binding SelectedFoodItem.fPrice, 
                                 ValidatesOnDataErrors=True,
                                 UpdateSourceTrigger=PropertyChanged}" 
                                 Name="pricetxt" BorderBrush="AliceBlue" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="0,4,0,6" />
@@ -67,7 +67,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding FoodName}" Width="*" Header="Food Name"/>
                     <DataGridTextColumn Binding="{Binding Description}" Width="*" Header="Description"/>
-                    <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price"/>
+                    <DataGridTextColumn Binding="{Binding fPrice}" Width="*" Header="Price"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

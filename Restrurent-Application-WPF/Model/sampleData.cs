@@ -18,10 +18,10 @@ namespace Restrurent_Application_WPF.Model
 
                 List<FoodItems> fooditems = new List<FoodItems>()
                 {
-                    new FoodItems { FoodName = "Tea", Description = "Tea", Price = 8 },
-                     new FoodItems { FoodName = "Samosa", Description = "Samosa", Price = 12 },
-                      new FoodItems { FoodName = "Vada Pav", Description = "Vada Pav", Price = 12 },
-                       new FoodItems { FoodName = "Dosa", Description = "Dosa", Price = 20 }
+                    new FoodItems { FoodName = "Tea", Description = "Tea", fPrice = 8 },
+                     new FoodItems { FoodName = "Samosa", Description = "Samosa", fPrice = 12 },
+                      new FoodItems { FoodName = "Vada Pav", Description = "Vada Pav", fPrice = 12 },
+                       new FoodItems { FoodName = "Dosa", Description = "Dosa", fPrice = 20 }
                 };
 
                 List<TableList> tablelist = new List<TableList>()
