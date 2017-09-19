@@ -50,8 +50,6 @@ namespace Restrurent_Application_WPF.ViewModel
             this._dbLayerObj = _dbLayerObj;
         }
 
-        
-
         public List<TableList> getTableList()
         {
             //TableList = _dbLayerObj.getTableList();

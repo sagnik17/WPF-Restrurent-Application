@@ -152,7 +152,7 @@ namespace Restrurent_Application_WPF.DB_Layer
                 return false;
         }
 
-        public List<ViewOrderItems> getFoodOrderDetails()
+        public List<ViewOrderItems> getFoodOrderDetails(TableList selectedtable)
         {
             DataTable dt = new DataTable();
             List<ViewOrderItems> orderItems = new List<ViewOrderItems>();
@@ -163,13 +163,23 @@ namespace Restrurent_Application_WPF.DB_Layer
                             fo.OrderID = o.OrderID inner join FoodItems ft on ft.FoodID = fo.FoodID where t.BookingStatus = @BookingStatus and t.TableID = @TableID";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@BookingStatus", bookingstatus.Booked.ToString());
-            cmd.Parameters.AddWithValue("@TableID", 1);
+            cmd.Parameters.AddWithValue("@TableID", selectedtable.TableID);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
 
             for(int i = 0; dt.Rows.Count > i; i++)
             {
                 ViewOrderItems orderItem = new ViewOrderItems();
+                orderItem.OrderID = Convert.ToInt32(dt.Rows[i]["OrderID"]);
+                orderItem.FoodID = Convert.ToInt32(dt.Rows[i]["FoodID"]);
+                orderItem.TableID = Convert.ToInt32(dt.Rows[i]["FoodID"]);
+                orderItem.FoodName = dt.Rows[i]["FoodName"].ToString();
+                orderItem.TableName = dt.Rows[i]["TableName"].ToString();
+                orderItem.OrderCreatedDate = Convert.ToDateTime(dt.Rows[i]["CreatedDate"]);
+                orderItem.OrderStatus = dt.Rows[i]["OrderStatus"].ToString();
+                orderItem.Quantity = Convert.ToInt32(dt.Rows[i]["Quantity"]);
+                orderItem.Price = Convert.ToInt32(dt.Rows[i]["Price"]);
+                orderItem.BookingStatus = dt.Rows[i]["BookingStatus"].ToString();
                 orderItems.Add(orderItem);
             }
 

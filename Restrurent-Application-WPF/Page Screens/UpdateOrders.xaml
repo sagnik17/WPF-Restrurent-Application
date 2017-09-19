@@ -19,13 +19,15 @@
         </Style>
     </Page.Resources>
 
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Height="50">
-            <Grid Height="293">
+    <DockPanel Margin="0,0,-208,0">
+        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Height="50" Margin="23,0,117,0" Width="368">
+            <Grid Height="42" Width="364">
                 <ComboBox x:Name="tablelistcombo"  
                   ItemsSource="{Binding AllTablelist}" SelectedItem="{Binding STableList}" SelectedValuePath="TableID" DisplayMemberPath="TableName" 
                   HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="133,14,0,0"/>
-                <Label x:Name="label" Content="Select Table Number" Margin="8,10,197,264"/>
+                <Label x:Name="label" Content="Select Table Number" Margin="6,15,206,4"/>
+                <Button x:Name="button" Command="{Binding GetFoodListCommand}" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="264,15,-39,0"/>
+
             </Grid>
         </StackPanel>
 
@@ -39,8 +41,8 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom" Height="82" Margin="-300,0,3,0" Width="297">
-           
+        <!--<StackPanel HorizontalAlignment="Center" DockPanel.Dock="Bottom" Height="82" Margin="-300,0,3,0" Width="297">
+
 
             <Grid Margin="1">
                 <Grid.ColumnDefinitions>
@@ -74,9 +76,9 @@
                 <Button Content="Clear" Name="Clear" Margin="0,88,0,-90" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Width="105" />
                 <Label x:Name="status"   Foreground="Green" Margin="-3,150,-5,-149" Grid.Row="2" HorizontalContentAlignment="Center"
                    FontSize="16" FontWeight="Bold" Grid.ColumnSpan="2"/>
-
+                
             </Grid>
-        </StackPanel>
+        </StackPanel>-->
     </DockPanel>
 
 </Page>

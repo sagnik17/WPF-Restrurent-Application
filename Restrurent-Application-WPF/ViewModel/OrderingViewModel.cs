@@ -42,7 +42,7 @@ namespace Restrurent_Application_WPF.ViewModel
         public TableList STableList
         {
             get { return _stablelist; }
-            set { _stablelist = value; }
+            set { _stablelist = value; NotifyPropertyChanged();  }
         }
         public ICollection<FoodItems> Foodlist
         {
@@ -53,7 +53,7 @@ namespace Restrurent_Application_WPF.ViewModel
         public FoodItems SFoodList
         {
             get { return _sFoodItem; }
-            set { _sFoodItem = value; }
+            set { _sFoodItem = value; NotifyPropertyChanged(); }
         }
         private DataAccessLayer _dbLayerObj;
         private ViewOrderItems selectedOrderItem;
@@ -92,7 +92,8 @@ namespace Restrurent_Application_WPF.ViewModel
         public OrderingViewModel() : this(new DataAccessLayer())
         {
             Message = "";
-            GetCustomerList();
+            //GetCustomerList();
+            //getFoodOrderItems();
         }
 
         public OrderingViewModel(DataAccessLayer _dbLayerObj)
@@ -101,7 +102,7 @@ namespace Restrurent_Application_WPF.ViewModel
             getAllTableList();
             getFoodList();
             foodOrderItems = new ObservableCollection<ViewOrderItems>();
-            FoodItems = new ObservableCollection<FoodItems>();
+            //FoodItems = new ObservableCollection<FoodItems>();
             this._dbLayerObj = _dbLayerObj;
         }
 
@@ -152,26 +153,34 @@ namespace Restrurent_Application_WPF.ViewModel
         }
         public void getFoodOrderItems()
         {
+            foodOrderItems.Clear();
+            SelectedOrderItem = null;
             _dbLayerObj = new DataAccessLayer();
-            foodOrderItems = _dbLayerObj.getFoodOrderDetails();
-           // return  _dbLayerObj.getFoodOrderDetails();
+            foodOrderItems = _dbLayerObj.getFoodOrderDetails(STableList);
+           //return  _dbLayerObj.getFoodOrderDetails();
         }
 
-
-        public ICollection<FoodItems> FoodItems
+        public ICommand GetOrder
         {
-            get;
-            private set;
+            get
+            {
+                return new ActionCommand(p => getFoodOrderItems());
+            }
         }
+        //public ICollection<FoodItems> FoodItems
+        //{
+        //    get;
+        //    private set;
+        //}
 
-        private void GetCustomerList()
-        {
-            FoodItems.Clear();
-            //selectedFoodItem = null;
-            _dbLayerObj = new DataAccessLayer();
-            foreach (var fooditem in _dbLayerObj.GetFoodItems())
-                FoodItems.Add(fooditem);
-        }
+        //private void GetCustomerList()
+        //{
+        //    FoodItems.Clear();
+        //    //selectedFoodItem = null;
+        //    _dbLayerObj = new DataAccessLayer();
+        //    foreach (var fooditem in _dbLayerObj.GetFoodItems())
+        //        FoodItems.Add(fooditem);
+        //}
 
     }
 }

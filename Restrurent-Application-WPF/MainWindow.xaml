@@ -9,20 +9,20 @@
       xmlns:Models="clr-namespace:Restrurent_Application_WPF.Model"
       xmlns:ActionEvents="clr-namespace:Restrurent_Application_WPF.ActionEvents"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" WindowState="Normal">
+        Title="Snak Jack Restrurent App" Height="600" Width="800" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" WindowState="Normal" Icon="Images/Icon.jpg" Background="#FFE05959">
     <DockPanel LastChildFill="True">
         <StackPanel Background="AliceBlue" DockPanel.Dock="Bottom" Orientation="Vertical">
             <Label BorderBrush="Black">Status : Connected</Label>
         </StackPanel>
         <Border BorderBrush="DarkBlue" DockPanel.Dock="Left" BorderThickness="1">
             <StackPanel Background="AliceBlue" MinWidth="160">
-                <Label FontSize="24" Height="50" HorizontalContentAlignment="Center">Menu</Label>
+                <Label FontSize="24" Height="50" HorizontalContentAlignment="Center" Foreground="#FF14B0BF" FontWeight="Bold">Menu</Label>
 
-                <Button Name="AddItems" Command="{Binding GetFoodListCommand}" Content="Add New Food Items" Height="50" Click="AddItems_Click"></Button>
-                <Button Name="PlaceNewOrder" Content="Place New Order" Height="50" Click="PlaceNewOrder_Click"></Button>
-                <Button Name="UpdateOrder" Content="Update Order" Height="50" Click="UpdateOrder_Click"></Button>
-                <Button Name="GenerateBill" Content="Generate Bill" Height="50"></Button>
+                <Button Name="AddItems" Command="{Binding GetFoodListCommand}" Content="Add New Food Items" Height="50" Click="AddItems_Click" Background="#FFDADADA" Foreground="#FF179B9B" FontWeight="Bold"></Button>
+                <Button Name="PlaceNewOrder" Content="Place New Order" Height="50" Click="PlaceNewOrder_Click" FontWeight="Bold" Foreground="#FF2D9E9E"></Button>
+                <Button Name="UpdateOrder" Content="Update Order" Height="50" Click="UpdateOrder_Click" FontWeight="Bold" Foreground="#FF29A2A2"></Button>
+                <Button Name="GenerateBill" Content="Generate Bill" Height="50" FontWeight="Bold" Foreground="#FF239393"></Button>
             </StackPanel>
         </Border>
         <Border BorderBrush="DarkBlue" BorderThickness="1" DockPanel.Dock="Top">
@@ -30,7 +30,7 @@
                 <!--<StackPanel.Background>
                     <ImageBrush ImageSource="F:\Restrurent-Application-WPF\Restrurent-Application-WPF\Images\banner.jpg"/>
                 </StackPanel.Background>-->
-                <Label BorderBrush="Black" Margin="5" FontSize="24" Width="429" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="Black">Snack Jack Restrurent APP
+                <Label BorderBrush="Black" Margin="5" FontSize="24" Width="429" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FF25B1C7">Snack Jack Restrurent APP
                 </Label>
             </StackPanel>
         </Border>
