@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Restrurent_Application_WPF.Model
 {
 
-    public class sampleData : CreateDatabaseIfNotExists<RestrurentDB>
+    public class sampleData : DropCreateDatabaseAlways<RestrurentDB>
     {
         enum bookingstatus { Booked, Reserved, Available };
         protected override void Seed(RestrurentDB context)

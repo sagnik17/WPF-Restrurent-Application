@@ -39,7 +39,7 @@ namespace Restrurent_Application_WPF.DB_Layer
             ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
             conn = new SqlConnection(ConnectionString);
             conn.Open();
-            string query = "Insert into FoodItems (FoodName,Description,Price) values (@FoodName,@Description,@Price) select SCOPE_IDENTITY()";
+            string query = "Insert into FoodItems (FoodName,Description,fPrice) values (@FoodName,@Description,@Price) select SCOPE_IDENTITY()";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@FoodName", newfoodItem.FoodName);
             cmd.Parameters.AddWithValue("@Description", newfoodItem.Description);
